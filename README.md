@@ -25,6 +25,18 @@ POSTGRES_DB=cinemais
 
 4. Execute o comando `docker-compose up --build`
 
+## Como rodar os testes
+- Certifique-se de que o banco de dados está rodando e que as tabelas estão criadas.
+- Execute o comando `npm run test:e2e` para rodar os testes de integração
+- Ele tem o seguinte fluxo: 
+    - Loga com o usuário criado na seed (e define o userId)
+    - Lista as mídias (e define a primeira mídia como a ser utilizada nos testes)
+    - Adiciona a mídia aos favoritos do usuário (utilizando o userId e mediaId)
+    - Pega todos os favoritos do usuário e verifica se o último favorito adicionado é o mesmo que foi adicionado anteriormente.
+    - Remove o favorito do usuário (utilizando o userId e mediaId)
+- Para esses testes, o usuário e a mídia são criados na seed do banco de dados, então não é necessário criar manualmente.
+- Verifique o arquivo `test/jest.setup.ts` para ver as configurações iniciais do ambiente de testes, como estou usando docker-compose o banco é criando e setado como `db` então preciso reescrever a variável de ambiente `DATABASE_URL` para o banco de dados que está rodando no docker(localmente).
+
 ## Tecnologias utilizadas
 
 - TypeScript

@@ -9,7 +9,6 @@ import {
 } from '@nestjs/common';
 import { MediaService } from './media.service';
 import { CreateMediaDto } from './dto/create-media.dto';
-import { User } from '@prisma/client';
 import { UpdateMediaDto } from './dto/update-media.dto';
 import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { MediaDoc } from './doc/media.doc';
