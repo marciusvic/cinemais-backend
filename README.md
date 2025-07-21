@@ -12,7 +12,7 @@
 
 ```env
 {
-DATABASE_URL=postgres://postgres:password123@localhost:5432/cinemais
+DATABASE_URL=postgres://postgres:password123@db:5432/cinemais
 JWT_SECRET='infobase'
 JWT_EXPIRES_IN=1d
 PORT=3000
