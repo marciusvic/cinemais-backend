@@ -16,8 +16,35 @@ DATABASE_URL=postgres://postgres:password123@localhost:5432/cinemais
 JWT_SECRET='infobase'
 JWT_EXPIRES_IN=1d
 PORT=3000
+
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=password123
+POSTGRES_DB=cinemais
 }
 ```
 
 4. Execute o comando `docker-compose up --build`
 
+## Tecnologias utilizadas
+
+- TypeScript
+- Node.js
+- Nest.js
+- Prisma
+- Docker
+- Postgres
+
+## Uso do NestJs
+- Escolhi usar o Nest por ser um framework que facilita a construção de APIs organizadas, além de já ter uma estrutura robusta para lidar com autenticação e validação de dados, além disso é o framework backend que mais tenho expertise.
+
+## Organização do código
+- O código está organizado em módulos, seguindo a estrutura do Nest.js, o que facilita a manutenção e a escalabilidade.
+- Cada módulo tem seu próprio controller, service, DTOs e Repository.
+- O controller lida com as requisições HTTP, o service contém a regra de negócio e o repository interage com o banco de dados através do Prisma.
+
+## Documentação
+- A documentação da API está disponível no Swagger, acessível em `http://localhost:3000/api`.
+- Para gerar um json acesse `http://localhost:3000/api-json`, após isso você pode importar o arquivo no Insomnia ou Postman.
+
+## Observações
+- Implementei autenticação JWT para proteger as rotas, mas não foi pedido as rotas protegidas, pois no esquema das rotas é possível acessar as rotas de favoritos e usuários sem autenticação.
