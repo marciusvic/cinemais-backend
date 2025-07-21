@@ -14,12 +14,13 @@ export class MediaDoc extends CreateMediaDto {
   })
   declare description: string;
   @ApiProperty({
-    example: 'Action',
-    description: 'Gênero da mídia',
-  })
-  @ApiProperty({
     example: MediaType.series,
     description: 'Tipo da mídia (series, movie)',
+  })
+  declare type: MediaType;
+  @ApiProperty({
+    example: 'Action',
+    description: 'Gênero da mídia',
   })
   declare genre: string;
   @ApiProperty({

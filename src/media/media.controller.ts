@@ -6,19 +6,15 @@ import {
   Param,
   Patch,
   Post,
-  UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { MediaService } from './media.service';
 import { CreateMediaDto } from './dto/create-media.dto';
-import { CurrentUser } from 'src/user/decorators/current-user.decorator';
 import { User } from '@prisma/client';
 import { UpdateMediaDto } from './dto/update-media.dto';
 import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { MediaDoc } from './doc/media.doc';
 
 @Controller('media')
-@UseGuards(JwtAuthGuard)
 export class MediaController {
   constructor(private readonly mediaService: MediaService) {}
 
@@ -39,8 +35,8 @@ export class MediaController {
     description: 'Formato esperado para criar mídia',
     type: MediaDoc,
   })
-  create(@Body() createMediaDto: CreateMediaDto, @CurrentUser() user: User) {
-    return this.mediaService.create(createMediaDto, user.id);
+  create(@Body() createMediaDto: CreateMediaDto) {
+    return this.mediaService.create(createMediaDto);
   }
 
   @Get()
@@ -90,12 +86,8 @@ export class MediaController {
     status: 404,
     description: 'Mídia não encontrada.',
   })
-  update(
-    @Param('id') id: string,
-    @Body() updateMediaDto: UpdateMediaDto,
-    @CurrentUser() user: User,
-  ) {
-    return this.mediaService.update(id, updateMediaDto, user.id);
+  update(@Param('id') id: string, @Body() updateMediaDto: UpdateMediaDto) {
+    return this.mediaService.update(id, updateMediaDto);
   }
 
   @Delete(':id')
@@ -111,7 +103,7 @@ export class MediaController {
     status: 404,
     description: 'Mídia não encontrada.',
   })
-  remove(@Param('id') id: string, @CurrentUser() user: User) {
-    return this.mediaService.remove(id, user.id);
+  remove(@Param('id') id: string) {
+    return this.mediaService.remove(id);
   }
 }

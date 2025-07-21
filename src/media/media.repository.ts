@@ -6,8 +6,8 @@ import { PrismaService } from 'nestjs-prisma';
 export class MediaRepository {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create({ title, description, type, releaseYear, genre, userId }) {
-    if (!title || !description || !type || !releaseYear || !genre || !userId) {
+  async create({ title, description, type, releaseYear, genre }) {
+    if (!title || !description || !type || !releaseYear || !genre) {
       throw new Error('All fields are required');
     }
 

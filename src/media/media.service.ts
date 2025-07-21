@@ -13,8 +13,8 @@ import { NotFoundError } from 'rxjs';
 export class MediaService {
   constructor(private readonly mediaRepository: MediaRepository) {}
 
-  async create(createMediaDto: CreateMediaDto, userId: string) {
-    return this.mediaRepository.create({ ...createMediaDto, userId });
+  async create(createMediaDto: CreateMediaDto) {
+    return this.mediaRepository.create({ ...createMediaDto });
   }
 
   async findAll(where = {}) {
@@ -34,7 +34,7 @@ export class MediaService {
     return media;
   }
 
-  async update(id: string, updateMediaDto: UpdateMediaDto, userId: string) {
+  async update(id: string, updateMediaDto: UpdateMediaDto) {
     const media = await this.mediaRepository.findOne(id);
 
     if (!media) {
@@ -47,7 +47,7 @@ export class MediaService {
     });
   }
 
-  async remove(id: string, userId: string) {
+  async remove(id: string) {
     const media = await this.mediaRepository.findOne(id);
 
     if (!media) {
