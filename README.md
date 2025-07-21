@@ -48,3 +48,4 @@ POSTGRES_DB=cinemais
 
 ## Observações
 - Implementei autenticação JWT para proteger as rotas, mas não foi pedido as rotas protegidas, pois no esquema das rotas é possível acessar as rotas de favoritos e usuários sem autenticação.
+- Caso queira testar a autenticação você pode adicionar a tag `@UseGuards(JwtAuthGuard)` nos controllers que deseja proteger.
